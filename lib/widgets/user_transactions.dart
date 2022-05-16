@@ -12,23 +12,47 @@ class _UserTransactionsState extends State<UserTransactions> {
   final List<Transaction> transactions = [
     Transaction(
       id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
+      title: 'Weekly Groceries',
+      amount: 16.3,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'Weekly Groceries',
+      amount: 16.3,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'Weekly Groceries',
+      amount: 16.3,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'Weekly Groceries',
+      amount: 16.3,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
-      title: 'Weekly Groceries',
-      amount: 16.53,
+      title: 'Weekly Water',
+      amount: 20.8,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't3',
+      title: 'Billie Jean',
+      amount: 50.00,
       date: DateTime.now(),
     ),
   ];
 
-  void addNewTransaction(String Title, String Amount) {
+  void _addNewTransaction(String Title, String Amount) {
     final newTx = Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 69.99,
+      id: DateTime.now().toString(),
+      title: Title,
+      amount: double.parse(Amount),
       date: DateTime.now(),
     );
     setState(() {
@@ -39,7 +63,7 @@ class _UserTransactionsState extends State<UserTransactions> {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      NewTransaction(),
+      NewTransaction(_addNewTransaction),
       TransactionList(transactions),
     ]);
   }
