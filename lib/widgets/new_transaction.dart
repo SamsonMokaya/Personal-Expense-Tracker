@@ -17,15 +17,20 @@ class NewTransaction extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: 10),
             child: TextField(
+              cursorColor: Colors.green,
               decoration: InputDecoration(
                 labelText: "Title",
+                hintText: "Enter the title",
               ),
               controller: titleController,
             ),
           ),
           TextField(
+            cursorColor: Colors.green,
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.green),
+              ),
               //labelText: "Amount",
               hintText: "Amount",
             ),
