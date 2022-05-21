@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -10,12 +11,12 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 440,
-      child: SingleChildScrollView(
-        child: Column(
-          children: transactions.map((tx) {
-            return Card(
-              child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+      height: 300,
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
+          return Card(
+            child: Row(
+              children: <Widget>[
                 Container(
                   margin: EdgeInsets.symmetric(
                     vertical: 10,
@@ -23,38 +24,43 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.green,
-                      width: 3,
+                      color: Colors.purple,
+                      width: 2,
                     ),
-                    borderRadius: BorderRadius.circular(10),
                   ),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    '\$' + tx.amount.toString(),
+                    '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.green,
                       fontSize: 20,
+                      color: Colors.purple,
                     ),
                   ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Text(
-                      tx.title,
+                      transactions[index].title,
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(DateFormat().format(tx.date))
+                    Text(
+                      DateFormat.yMMMd().format(transactions[index].date),
+                      style: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
                   ],
                 ),
-              ]),
-            );
-          }).toList(),
-        ),
+              ],
+            ),
+          );
+        },
+        itemCount: transactions.length,
       ),
     );
   }
