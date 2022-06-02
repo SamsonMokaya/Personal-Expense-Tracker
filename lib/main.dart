@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        accentColor: Color.fromARGB(255, 7, 100, 10),
+      ),
       debugShowCheckedModeBanner: false,
       title: "Expense Tracker",
       home: MyHomePage(),
