@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/new_transaction.dart';
 
+// ignore: duplicate_import
 import 'widgets/new_transaction.dart';
 import 'widgets/transaction_list.dart';
 import '/models/transaction.dart';
@@ -17,6 +18,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         accentColor: Color.fromARGB(255, 7, 100, 10),
+        fontFamily: 'Quicksand',
+        appBarTheme:
+            AppBarTheme(textTheme: ThemeData.light().textTheme.copyWith(
+              
+              title: TextStyle(
+                fontFamily: 'OpenSans', fontSize: 20
+                ),
+              )),
       ),
       debugShowCheckedModeBanner: false,
       title: "Expense Tracker",
@@ -73,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Flutter App', style: TextStyle(fontFamily: 'OpenSans')),
         actions: <Widget>[
           IconButton(
               icon: Icon(
